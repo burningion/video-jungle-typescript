@@ -56,5 +56,20 @@ export class Videos {
   async create(data: any): Promise<any> {
     return this.client.makeRequest('POST', '/video-file', data);
   }
+}
 
+export class Scripts {
+  constructor(private client: ApiClient) {}
+
+  async list(projectId: string): Promise<any> {
+    return this.client.makeRequest('GET', `/projects/${projectId}/scripts`);
+  }
+
+  async get(projectId: string, scriptId: string): Promise<any> {
+    return this.client.makeRequest('GET', `/scripts/${projectId}/${scriptId}`);
+  }
+
+  async create(projectId: string, name: string, data: string, inputs: Array<string>): Promise<any> {
+    return this.client.makeRequest('POST', `/scripts/${projectId}/scripts`, { name, data, inputs });
+  }
 }

@@ -7,7 +7,7 @@ This is a TypeScript client for the Video Jungle API. It provides a simple inter
 You can install the Video Jungle API client using npm:
 
 ```
-npm install videojungle
+npm install @skate85/videojungle
 ```
 
 ## Usage

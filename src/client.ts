@@ -53,8 +53,23 @@ export class Videos {
     return this.client.makeRequest('GET', '/video-file');
   }
 
-  async create(data: any): Promise<any> {
-    return this.client.makeRequest('POST', '/video-file', data);
+  async create(name: string, filename: string, upload_method: string): Promise<any> {
+    return this.client.makeRequest('POST', '/video-file', { name, filename, upload_method });
+  }
+
+  async get_analysis(videoId: string): Promise<any> {
+    return this.client.makeRequest('GET', `/video-file/${videoId}/analysis`);
+  }
+
+  async delete(videoId: string): Promise<any> {
+    return this.client.makeRequest('DELETE', `/video-file/${videoId}`);
+  }
+  async upload_direct(videoId: string, file: any): Promise<any> {
+    return this.client.makeRequest('POST', `/video-file/${videoId}/upload-video`, file);
+  }
+
+  async create_analysis(videoId: string): Promise<any> {
+    return this.client.makeRequest('POST', `/video-file/${videoId}/analysis`);
   }
 }
 

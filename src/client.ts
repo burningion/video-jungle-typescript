@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios';
+import { Method } from 'axios';
 
 export class ApiClient {
   private readonly baseURL = 'https://api.video-jungle.com';
@@ -15,7 +16,8 @@ export class ApiClient {
     this.projects = new Projects(this);
   }
 
-  async makeRequest<T>(method: string, endpoint: string, data?: any): Promise<T> {
+  
+  async makeRequest<T>(method: Method, endpoint: string, data?: any): Promise<T> {
     const response = await this.axiosInstance.request<T>({
       method,
       url: endpoint,

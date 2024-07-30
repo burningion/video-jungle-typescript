@@ -88,3 +88,23 @@ export class Scripts {
     return this.client.makeRequest('POST', `/scripts/${projectId}/scripts`, { name, data, inputs });
   }
 }
+
+export class Prompts {
+  constructor(private client: ApiClient) {}
+
+  async list(): Promise<any> {
+    return this.client.makeRequest('GET', `/prompts`);
+  }
+
+  async get(promptId: string): Promise<any> {
+    return this.client.makeRequest('GET', `/prompts/${promptId}`);
+  }
+
+  async generate(task: string, parameters: Array<string>): Promise<any> {
+    return this.client.makeRequest('POST', `/prompts`, { task, parameters });
+  }
+
+  async delete(promptId: string): Promise<any> {
+    return this.client.makeRequest('DELETE', `/prompts/${promptId}`);
+  }
+}
